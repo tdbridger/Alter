@@ -1,0 +1,14 @@
+[
+  { "raw": "item.raw_shrimps", "cooked": "item.shrimps", "burnt": "item.burnt_shrimp", "level": 1, "experience": 30.0, "burnStop": 34 },
+  { "raw": "item.raw_sardine", "cooked": "item.sardine", "burnt": "item.burnt_fish", "level": 1, "experience": 40.0, "burnStop": 38 },
+  { "raw": "item.raw_anchovies", "cooked": "item.anchovies", "burnt": "item.burnt_fish", "level": 1, "experience": 30.0, "burnStop": 34 },
+  { "raw": "item.raw_herring", "cooked": "item.herring", "burnt": "item.burnt_fish", "level": 5, "experience": 50.0, "burnStop": 41 },
+  { "raw": "item.raw_trout", "cooked": "item.trout", "burnt": "item.burnt_fish", "level": 15, "experience": 70.0, "burnStop": 49 },
+  { "raw": "item.raw_pike", "cooked": "item.pike", "burnt": "item.burnt_fish", "level": 20, "experience": 80.0, "burnStop": 53 },
+  { "raw": "item.raw_salmon", "cooked": "item.salmon", "burnt": "item.burnt_fish", "level": 25, "experience": 90.0, "burnStop": 58 },
+  { "raw": "item.raw_tuna", "cooked": "item.tuna", "burnt": "item.burnt_fish", "level": 30, "experience": 100.0, "burnStop": 63 },
+  { "raw": "item.raw_lobster", "cooked": "item.lobster", "burnt": "item.burnt_lobster", "level": 40, "experience": 120.0, "burnStop": 74 },
+  { "raw": "item.raw_swordfish", "cooked": "item.swordfish", "burnt": "item.burnt_swordfish", "level": 45, "experience": 140.0, "burnStop": 86 },
+  { "raw": "item.raw_monkfish", "cooked": "item.monkfish", "burnt": "item.burnt_monkfish", "level": 62, "experience": 150.0, "burnStop": 92 },
+  { "raw": "item.raw_shark", "cooked": "item.shark", "burnt": "item.burnt_shark", "level": 80, "experience": 210.0, "burnStop": 99 }
+]
