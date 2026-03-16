@@ -10,7 +10,7 @@
     ]
   },
   {
-    "objects": ["object.copper_rocks_10943"],
+    "objects": ["object.copper_rocks", "object.copper_rocks_10943", "object.copper_rocks_11161", "object.copper_rocks_37944"],
     "emptyObject": "object.rocks_11390",
     "respawnTicks": 3,
     "level": 1,
