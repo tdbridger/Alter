@@ -1,0 +1,62 @@
+[
+  {
+    "objects": ["object.tree_1278", "object.tree_1276", "object.tree_1286"],
+    "emptyObject": "object.tree_stump_1342",
+    "respawnTicks": 5,
+    "level": 1,
+    "experience": 25.0,
+    "logs": [
+      { "item": "item.logs", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.oak_tree_10820"],
+    "emptyObject": "object.tree_stump_1342",
+    "respawnTicks": 12,
+    "level": 15,
+    "experience": 37.5,
+    "logs": [
+      { "item": "item.oak_logs", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.willow_tree_10831", "object.willow_tree_10833"],
+    "emptyObject": "object.tree_stump_9711",
+    "respawnTicks": 15,
+    "level": 30,
+    "experience": 67.5,
+    "logs": [
+      { "item": "item.willow_logs", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.maple_tree_10832"],
+    "emptyObject": "object.tree_stump_9712",
+    "respawnTicks": 60,
+    "level": 45,
+    "experience": 100.0,
+    "logs": [
+      { "item": "item.maple_logs", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.yew_1309", "object.yew_1753"],
+    "emptyObject": "object.tree_stump_7402",
+    "respawnTicks": 100,
+    "level": 60,
+    "experience": 175.0,
+    "logs": [
+      { "item": "item.yew_logs", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.magic_tree_10834"],
+    "emptyObject": "object.tree_stump_9713",
+    "respawnTicks": 200,
+    "level": 75,
+    "experience": 250.0,
+    "logs": [
+      { "item": "item.magic_logs", "min": 1, "max": 1 }
+    ]
+  }
+]
