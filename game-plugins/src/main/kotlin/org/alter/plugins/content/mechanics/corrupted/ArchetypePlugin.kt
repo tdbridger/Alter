@@ -191,6 +191,17 @@ class ArchetypePlugin(
         MutationRoller.applyMutations(player, mutations)
         MutationRoller.displayMutations(player, mutations)
 
+        // Generate survivor NPCs
+        val survivors = SurvivorPlugin.generateSurvivors(player)
+        player.message("<col=FFD700>${survivors.size} survivors share this world with you.</col>")
+        player.message("Type <col=FFD700>::survivors</col> to check their status.")
+        player.message("")
+
+        // Start survivor timer
+        if (!player.timers.has(SURVIVOR_TIMER)) {
+            player.timers[SURVIVOR_TIMER] = 500
+        }
+
         player.message("<col=8B0000>The corruption begins...</col>")
     }
 
