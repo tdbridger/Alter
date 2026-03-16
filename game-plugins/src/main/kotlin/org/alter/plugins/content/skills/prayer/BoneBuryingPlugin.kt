@@ -16,7 +16,6 @@ enum class Bone(
 ) {
     BONES("item.bones", 4.5),
     BIG_BONES("item.big_bones", 15.0),
-    BABY_DRAGON_BONES("item.baby_dragon_bone", 30.0),
     DRAGON_BONES("item.dragon_bones", 72.0),
     DAGANNOTH_BONES("item.dagannoth_bones", 125.0),
     WYVERN_BONES("item.wyvern_bones", 72.0),
@@ -34,23 +33,15 @@ class BoneBuryingPlugin(
 
     init {
         onWorldInit {
-            // Resolve bone IDs
             Bone.values().forEach { bone ->
                 try {
                     bone.itemId = getRSCM(bone.itemName)
-                } catch (e: Exception) {
-                    // Some bones might not exist in this revision
-                }
-            }
-
-            // Register "bury" option for each bone type
-            Bone.values().forEach { bone ->
-                try {
-                    onItemOption(item = bone.itemName, option = "bury") {
+                    // Use option index 1 which is typically "Bury" for bones
+                    onItemOption(bone.itemName, option = 1) {
                         player.queue { bury(player, bone) }
                     }
                 } catch (e: Exception) {
-                    // Some bones might not exist in this revision
+                    Server.logger.error { "Failed to register bone: ${bone.itemName}: $e" }
                 }
             }
         }
@@ -61,7 +52,7 @@ class BoneBuryingPlugin(
         player.lock()
         try {
             player.inventory.remove(bone.itemId, 1)
-            player.animate(827) // bone burying animation
+            player.animate(827)
             player.message("You bury the $boneName.")
             wait(3)
             player.addXp(Skills.PRAYER, bone.experience)

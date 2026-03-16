@@ -77,5 +77,27 @@ class SpawnPlugin(
         spawnItem(item = "item.jug", amount = 1, x = 3211, z = 3212)
 
         spawnObj(obj = "object.altar_409", x = 3222, z = 3215, rot = 6)
+
+        // Fishing spots - Lumbridge Swamp (south of Lumbridge)
+        spawnNpc(npc = "npc.fishing_spot_1497", x = 3239, z = 3242, walkRadius = 0, direction = Direction.SOUTH)
+        spawnNpc(npc = "npc.fishing_spot_1497", x = 3239, z = 3244, walkRadius = 0, direction = Direction.SOUTH)
+
+        // Fishing spots - Lumbridge River (fly fishing)
+        spawnNpc(npc = "npc.rod_fishing_spot_1506", x = 3241, z = 3251, walkRadius = 0, direction = Direction.WEST)
+        spawnNpc(npc = "npc.rod_fishing_spot_1506", x = 3238, z = 3253, walkRadius = 0, direction = Direction.WEST)
+
+        // Chickens near Lumbridge
+        spawnNpc(npc = "npc.chicken_1173", x = 3231, z = 3295, walkRadius = 5, direction = Direction.SOUTH)
+        spawnNpc(npc = "npc.chicken_1173", x = 3229, z = 3293, walkRadius = 5, direction = Direction.EAST)
+        spawnNpc(npc = "npc.chicken_1173", x = 3233, z = 3297, walkRadius = 5, direction = Direction.NORTH)
+        spawnNpc(npc = "npc.chicken_1173", x = 3235, z = 3296, walkRadius = 5, direction = Direction.WEST)
+        spawnNpc(npc = "npc.chicken_1173", x = 3230, z = 3298, walkRadius = 5, direction = Direction.SOUTH)
+
+        // Cows near Lumbridge
+        spawnNpc(npc = "npc.cow", x = 3258, z = 3276, walkRadius = 8, direction = Direction.SOUTH)
+        spawnNpc(npc = "npc.cow", x = 3261, z = 3273, walkRadius = 8, direction = Direction.EAST)
+        spawnNpc(npc = "npc.cow", x = 3255, z = 3269, walkRadius = 8, direction = Direction.NORTH)
+        spawnNpc(npc = "npc.cow", x = 3263, z = 3268, walkRadius = 8, direction = Direction.WEST)
+        spawnNpc(npc = "npc.cow", x = 3260, z = 3266, walkRadius = 8, direction = Direction.SOUTH)
     }
 }

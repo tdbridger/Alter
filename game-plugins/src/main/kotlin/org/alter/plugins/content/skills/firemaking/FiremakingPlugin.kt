@@ -16,7 +16,7 @@ enum class LogType(
     val logItem: String,
     val level: Int,
     val experience: Double,
-    val fireObj: String = "object.fire_3769",
+    val fireObj: String = "object.fire_26185",
     val burnTicks: Int = 150, // how long fire lasts
 ) {
     NORMAL("item.logs", 1, 40.0),
