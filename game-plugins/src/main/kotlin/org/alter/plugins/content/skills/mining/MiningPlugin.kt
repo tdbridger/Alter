@@ -26,15 +26,14 @@ class MiningPlugin(
             val service = world.getService(MiningService::class.java) ?: return@onWorldInit
 
             service.entries.forEach { entry ->
-                entry.objectIds.forEach { objId ->
-                    val mineOptions = getObject(objId).actions.filterNotNull().filter {
-                        it.equals("mine", ignoreCase = true)
-                    }
-                    mineOptions.forEach { option ->
-                        onObjOption(obj = objId, option = option) {
+                entry.objects.forEach { objName ->
+                    try {
+                        onObjOption(obj = objName, option = "mine") {
                             val obj = player.getInteractingGameObj()
                             player.queue { mine(player, obj, entry, world) }
                         }
+                    } catch (e: Exception) {
+                        // Object action doesn't exist, skip
                     }
                 }
             }

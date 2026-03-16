@@ -25,14 +25,16 @@ class WoodcuttingPlugin(
             val service = world.getService(WoodcuttingService::class.java) ?: return@onWorldInit
 
             service.entries.forEach { entry ->
-                entry.objectIds.forEach { objId ->
-                    val chopOptions = dev.openrune.cache.CacheManager.getObject(objId).actions.filterNotNull().filter {
-                        it.equals("chop down", ignoreCase = true) || it.equals("chop", ignoreCase = true)
-                    }
-                    chopOptions.forEach { option ->
-                        onObjOption(obj = objId, option = option) {
-                            val obj = player.getInteractingGameObj()
-                            player.queue { chop(player, obj, entry, world) }
+                entry.objects.forEach { objName ->
+                    // Try registering both common action names
+                    for (option in listOf("chop down", "chop")) {
+                        try {
+                            onObjOption(obj = objName, option = option) {
+                                val obj = player.getInteractingGameObj()
+                                player.queue { chop(player, obj, entry, world) }
+                            }
+                        } catch (e: Exception) {
+                            // Action doesn't exist for this object, skip
                         }
                     }
                 }

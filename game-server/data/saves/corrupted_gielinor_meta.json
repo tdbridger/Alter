@@ -1,0 +1,20 @@
+{
+  "runs": [
+    {
+      "run_number": 1,
+      "account": "tom",
+      "score": 421,
+      "corruption": 10,
+      "total_level": 43,
+      "combat_level": 3,
+      "wealth": 32120,
+      "timestamp": "2026-03-16T19:27:26.178958600Z"
+    }
+  ],
+  "lifetime_stats": {
+    "total_runs": 1,
+    "best_score": 421,
+    "highest_total_level": 43,
+    "highest_corruption": 10
+  }
+}

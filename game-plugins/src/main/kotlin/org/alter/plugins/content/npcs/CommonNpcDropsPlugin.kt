@@ -29,7 +29,7 @@ class CommonNpcDropsPlugin(
         listOf("npc.chicken", "npc.chicken_1401").forEach { name ->
             try {
                 onNpcDeath(name) { dropItems(npc, listOf(526 to 1, 2138 to 1, 314 to 5)) }
-            } catch (e: Exception) {}
+            } catch (e: Exception) { Server.logger.error { "Failed to bind NPC death: $e" } }
         }
 
         // Goblins drop bones, coins
@@ -40,7 +40,7 @@ class CommonNpcDropsPlugin(
                     if (Math.random() < 0.5) drops.add(995 to (1..25).random()) // coins
                     dropItems(npc, drops)
                 }
-            } catch (e: Exception) {}
+            } catch (e: Exception) { Server.logger.error { "Failed to bind NPC death: $e" } }
         }
 
         // Men/Women drop bones, coins
@@ -51,7 +51,7 @@ class CommonNpcDropsPlugin(
                     if (Math.random() < 0.7) drops.add(995 to (1..30).random())
                     dropItems(npc, drops)
                 }
-            } catch (e: Exception) {}
+            } catch (e: Exception) { Server.logger.error { "Failed to bind NPC death: $e" } }
         }
 
         // Guards drop bones, coins
@@ -63,20 +63,20 @@ class CommonNpcDropsPlugin(
                     if (Math.random() < 0.1) drops.add(1153 to 1) // iron med helm
                     dropItems(npc, drops)
                 }
-            } catch (e: Exception) {}
+            } catch (e: Exception) { Server.logger.error { "Failed to bind NPC death: $e" } }
         }
 
         // Giant rats drop bones, raw rat meat
         try {
             onNpcDeath("npc.giant_rat") { dropItems(npc, listOf(526 to 1, 2134 to 1)) }
-        } catch (e: Exception) {}
+        } catch (e: Exception) { Server.logger.error { "Failed to bind NPC death: $e" } }
 
         // Spiders drop nothing special (no bones for small spiders)
 
         // Giant spiders drop bones
         try {
             onNpcDeath("npc.giant_spider") { dropItems(npc, listOf(526 to 1)) }
-        } catch (e: Exception) {}
+        } catch (e: Exception) { Server.logger.error { "Failed to bind NPC death: $e" } }
     }
 
     private fun dropItems(npc: Npc, drops: List<Pair<Int, Int>>) {
