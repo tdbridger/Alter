@@ -1,0 +1,71 @@
+[
+  {
+    "bar": "item.bronze_bar",
+    "level": 1,
+    "experience": 6.2,
+    "ores": [
+      { "item": "item.copper_ore", "amount": 1 },
+      { "item": "item.tin_ore", "amount": 1 }
+    ]
+  },
+  {
+    "bar": "item.iron_bar",
+    "level": 15,
+    "experience": 12.5,
+    "ores": [
+      { "item": "item.iron_ore", "amount": 1 }
+    ]
+  },
+  {
+    "bar": "item.silver_bar",
+    "level": 20,
+    "experience": 13.7,
+    "ores": [
+      { "item": "item.silver_ore", "amount": 1 }
+    ]
+  },
+  {
+    "bar": "item.steel_bar",
+    "level": 30,
+    "experience": 17.5,
+    "ores": [
+      { "item": "item.iron_ore", "amount": 1 },
+      { "item": "item.coal", "amount": 2 }
+    ]
+  },
+  {
+    "bar": "item.gold_bar",
+    "level": 40,
+    "experience": 22.5,
+    "ores": [
+      { "item": "item.gold_ore", "amount": 1 }
+    ]
+  },
+  {
+    "bar": "item.mithril_bar",
+    "level": 50,
+    "experience": 30.0,
+    "ores": [
+      { "item": "item.mithril_ore", "amount": 1 },
+      { "item": "item.coal", "amount": 4 }
+    ]
+  },
+  {
+    "bar": "item.adamantite_bar",
+    "level": 70,
+    "experience": 37.5,
+    "ores": [
+      { "item": "item.adamantite_ore", "amount": 1 },
+      { "item": "item.coal", "amount": 6 }
+    ]
+  },
+  {
+    "bar": "item.runite_bar",
+    "level": 85,
+    "experience": 50.0,
+    "ores": [
+      { "item": "item.runite_ore", "amount": 1 },
+      { "item": "item.coal", "amount": 8 }
+    ]
+  }
+]

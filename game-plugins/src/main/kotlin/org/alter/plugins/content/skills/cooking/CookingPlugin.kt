@@ -53,34 +53,29 @@ class CookingPlugin(
 
         val rawName = entry.raw.removePrefix("item.").replace("_", " ")
         player.message("You attempt to cook the $rawName.")
-        player.lock()
-        try {
-            // Cook all raw fish in inventory
-            while (player.inventory.contains(entry.rawId)) {
-                player.animate(883) // cooking animation
-                wait(4)
+        val startTile = player.tile
+        while (player.inventory.contains(entry.rawId)) {
+            if (player.tile != startTile) break
+            player.animate(883)
+            wait(4)
+            if (player.tile != startTile) break
+            if (!player.inventory.contains(entry.rawId)) break
 
-                if (!player.inventory.contains(entry.rawId)) break
+            val level = player.getSkills().getBaseLevel(Skills.COOKING)
+            val burnChance = calculateBurnChance(level, entry)
 
-                val level = player.getSkills().getBaseLevel(Skills.COOKING)
-                val burnChance = calculateBurnChance(level, entry)
+            player.inventory.remove(entry.rawId, 1)
 
-                player.inventory.remove(entry.rawId, 1)
-
-                if (Math.random() < burnChance) {
-                    player.inventory.add(entry.burntId, 1)
-                    player.message("You accidentally burn the $rawName.")
-                } else {
-                    player.inventory.add(entry.cookedId, 1)
-                    player.addXp(Skills.COOKING, entry.experience)
-                    val cookedName = entry.cooked.removePrefix("item.").replace("_", " ")
-                    player.message("You successfully cook the $rawName.")
-                }
+            if (Math.random() < burnChance) {
+                player.inventory.add(entry.burntId, 1)
+                player.message("You accidentally burn the $rawName.")
+            } else {
+                player.inventory.add(entry.cookedId, 1)
+                player.addXp(Skills.COOKING, entry.experience)
+                player.message("You successfully cook the $rawName.")
             }
-        } finally {
-            player.animate(-1)
-            player.unlock()
         }
+        player.animate(-1)
     }
 
     private fun calculateBurnChance(level: Int, entry: CookingEntry): Double {
