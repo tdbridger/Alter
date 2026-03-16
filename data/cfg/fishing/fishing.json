@@ -1,0 +1,97 @@
+[
+  {
+    "npcs": ["npc.fishing_spot_1497", "npc.fishing_spot_1498"],
+    "option": "net",
+    "level": 1,
+    "experience": 10.0,
+    "tool": "item.small_fishing_net",
+    "animation": 621,
+    "fish": [
+      { "item": "item.raw_shrimps", "level": 1, "experience": 10.0, "weight": 3.0 },
+      { "item": "item.raw_anchovies", "level": 15, "experience": 40.0, "weight": 1.0 }
+    ]
+  },
+  {
+    "npcs": ["npc.fishing_spot_1497", "npc.fishing_spot_1498"],
+    "option": "bait",
+    "level": 5,
+    "experience": 20.0,
+    "tool": "item.fishing_rod",
+    "bait": "item.fishing_bait",
+    "animation": 623,
+    "fish": [
+      { "item": "item.raw_sardine", "level": 5, "experience": 20.0, "weight": 3.0 },
+      { "item": "item.raw_herring", "level": 10, "experience": 30.0, "weight": 1.0 }
+    ]
+  },
+  {
+    "npcs": ["npc.rod_fishing_spot", "npc.rod_fishing_spot_1506", "npc.rod_fishing_spot_1507"],
+    "option": "lure",
+    "level": 20,
+    "experience": 50.0,
+    "tool": "item.fly_fishing_rod",
+    "bait": "item.feather",
+    "animation": 623,
+    "fish": [
+      { "item": "item.raw_trout", "level": 20, "experience": 50.0, "weight": 3.0 },
+      { "item": "item.raw_salmon", "level": 30, "experience": 70.0, "weight": 1.0 }
+    ]
+  },
+  {
+    "npcs": ["npc.rod_fishing_spot", "npc.rod_fishing_spot_1506", "npc.rod_fishing_spot_1507"],
+    "option": "bait",
+    "level": 25,
+    "experience": 60.0,
+    "tool": "item.fishing_rod",
+    "bait": "item.fishing_bait",
+    "animation": 623,
+    "fish": [
+      { "item": "item.raw_pike", "level": 25, "experience": 60.0, "weight": 1.0 }
+    ]
+  },
+  {
+    "npcs": ["npc.fishing_spot_1510", "npc.fishing_spot_1511"],
+    "option": "cage",
+    "level": 40,
+    "experience": 90.0,
+    "tool": "item.lobster_pot",
+    "animation": 619,
+    "fish": [
+      { "item": "item.raw_lobster", "level": 40, "experience": 90.0, "weight": 1.0 }
+    ]
+  },
+  {
+    "npcs": ["npc.fishing_spot_1510", "npc.fishing_spot_1511"],
+    "option": "harpoon",
+    "level": 35,
+    "experience": 80.0,
+    "tool": "item.harpoon",
+    "animation": 618,
+    "fish": [
+      { "item": "item.raw_tuna", "level": 35, "experience": 80.0, "weight": 3.0 },
+      { "item": "item.raw_swordfish", "level": 50, "experience": 100.0, "weight": 1.0 }
+    ]
+  },
+  {
+    "npcs": ["npc.fishing_spot_1519", "npc.fishing_spot_1518"],
+    "option": "net",
+    "level": 62,
+    "experience": 120.0,
+    "tool": "item.small_fishing_net",
+    "animation": 621,
+    "fish": [
+      { "item": "item.raw_monkfish", "level": 62, "experience": 120.0, "weight": 1.0 }
+    ]
+  },
+  {
+    "npcs": ["npc.fishing_spot_1519", "npc.fishing_spot_1518"],
+    "option": "harpoon",
+    "level": 76,
+    "experience": 110.0,
+    "tool": "item.harpoon",
+    "animation": 618,
+    "fish": [
+      { "item": "item.raw_shark", "level": 76, "experience": 110.0, "weight": 1.0 }
+    ]
+  }
+]
