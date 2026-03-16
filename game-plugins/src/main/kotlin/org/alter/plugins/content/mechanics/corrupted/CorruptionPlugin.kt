@@ -20,6 +20,9 @@ import org.alter.game.plugin.PluginRepository
 
 val CORRUPTION_ATTR = AttributeKey<Int>(persistenceKey = "cg_corruption")
 val CORRUPTION_TIMER = TimerKey(persistenceKey = "cg_corruption_timer")
+val ARCHETYPE_MULTIPLIER_ATTR = AttributeKey<Double>(persistenceKey = "cg_archetype_multiplier")
+val ARCHETYPE_NAME_ATTR = AttributeKey<String>(persistenceKey = "cg_archetype_name")
+val ARCHETYPE_CHOSEN_ATTR = AttributeKey<Boolean>(persistenceKey = "cg_archetype_chosen")
 
 class CorruptionPlugin(
     r: PluginRepository,
