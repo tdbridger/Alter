@@ -28,8 +28,11 @@ class CorruptionPlugin(
 ) : KotlinPlugin(r, world, server) {
 
     init {
-        // Start corruption timer on login
+        // Start corruption timer and set XP rate on login
         onLogin {
+            // Phase B: 15x XP rate
+            player.xpRate = 15.0
+
             if (!player.timers.has(CORRUPTION_TIMER)) {
                 player.timers[CORRUPTION_TIMER] = 100 // 60 seconds
             }
