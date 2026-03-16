@@ -26,7 +26,7 @@ class CommonNpcDropsPlugin(
         onNpcDeath("npc.cow") { dropItems(npc, listOf(526 to 1, 2132 to 1, 1739 to 1)) }
 
         // Chickens drop bones, raw chicken, feather
-        listOf("npc.chicken", "npc.chicken_1401").forEach { name ->
+        listOf("npc.chicken_1173", "npc.chicken_1174").forEach { name ->
             try {
                 onNpcDeath(name) { dropItems(npc, listOf(526 to 1, 2138 to 1, 314 to 5)) }
             } catch (e: Exception) { Server.logger.error { "Failed to bind NPC death: $e" } }

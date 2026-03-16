@@ -24,8 +24,12 @@ class FishingPlugin(
             // Register fishing spot handlers
             service.entries.forEach { entry ->
                 entry.npcs.forEach { npcName ->
-                    onNpcOption(npcName, option = entry.option) {
-                        player.queue { fish(player, entry, world) }
+                    try {
+                        onNpcOption(npcName, option = entry.option) {
+                            player.queue { fish(player, entry, world) }
+                        }
+                    } catch (e: Exception) {
+                        // NPC doesn't have this option, skip
                     }
                 }
             }

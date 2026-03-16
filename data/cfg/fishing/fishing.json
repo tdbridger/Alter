@@ -1,7 +1,7 @@
 [
   {
     "npcs": ["npc.fishing_spot_1497", "npc.fishing_spot_1498"],
-    "option": "net",
+    "option": "Small Net",
     "level": 1,
     "experience": 10.0,
     "tool": "item.small_fishing_net",
@@ -13,7 +13,7 @@
   },
   {
     "npcs": ["npc.fishing_spot_1497", "npc.fishing_spot_1498"],
-    "option": "bait",
+    "option": "Bait",
     "level": 5,
     "experience": 20.0,
     "tool": "item.fishing_rod",
@@ -26,7 +26,7 @@
   },
   {
     "npcs": ["npc.rod_fishing_spot", "npc.rod_fishing_spot_1506", "npc.rod_fishing_spot_1507"],
-    "option": "lure",
+    "option": "Lure",
     "level": 20,
     "experience": 50.0,
     "tool": "item.fly_fishing_rod",
@@ -39,7 +39,7 @@
   },
   {
     "npcs": ["npc.rod_fishing_spot", "npc.rod_fishing_spot_1506", "npc.rod_fishing_spot_1507"],
-    "option": "bait",
+    "option": "Bait",
     "level": 25,
     "experience": 60.0,
     "tool": "item.fishing_rod",
@@ -51,7 +51,7 @@
   },
   {
     "npcs": ["npc.fishing_spot_1510", "npc.fishing_spot_1511"],
-    "option": "cage",
+    "option": "Cage",
     "level": 40,
     "experience": 90.0,
     "tool": "item.lobster_pot",
@@ -62,7 +62,7 @@
   },
   {
     "npcs": ["npc.fishing_spot_1510", "npc.fishing_spot_1511"],
-    "option": "harpoon",
+    "option": "Harpoon",
     "level": 35,
     "experience": 80.0,
     "tool": "item.harpoon",
@@ -74,7 +74,7 @@
   },
   {
     "npcs": ["npc.fishing_spot_1519", "npc.fishing_spot_1518"],
-    "option": "net",
+    "option": "Small Net",
     "level": 62,
     "experience": 120.0,
     "tool": "item.small_fishing_net",
@@ -85,7 +85,7 @@
   },
   {
     "npcs": ["npc.fishing_spot_1519", "npc.fishing_spot_1518"],
-    "option": "harpoon",
+    "option": "Harpoon",
     "level": 76,
     "experience": 110.0,
     "tool": "item.harpoon",

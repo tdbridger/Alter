@@ -31,7 +31,7 @@ class CommonNpcCombatPlugin(
         }
 
         // Chicken (level 1)
-        listOf("npc.chicken", "npc.chicken_1401").forEach { name ->
+        listOf("npc.chicken_1173", "npc.chicken_1174").forEach { name ->
             try { defineCombat(name, hp = 3, att = 1, str = 1, def = 1, attackAnim = 5849, blockAnim = 5850, deathAnim = 5851) } catch (e: Exception) { Server.logger.error { "Failed to set combat def for NPC: $e" } }
         }
 
