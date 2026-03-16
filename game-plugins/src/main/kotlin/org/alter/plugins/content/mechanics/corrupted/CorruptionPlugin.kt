@@ -78,6 +78,7 @@ class CorruptionPlugin(
                     4 -> {
                         player.message("<col=FF0000>=== CORRUPTION TIER 4: COLLAPSE ===</col>")
                         player.message("<col=8B0000>The World Boss has spawned. The end approaches.</col>")
+                        WorldBossPlugin.spawnBoss(player)
                     }
                     5 -> {
                         player.message("<col=FF0000>=== CORRUPTION TIER 5: ANNIHILATION ===</col>")

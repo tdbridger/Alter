@@ -186,6 +186,11 @@ class ArchetypePlugin(
         PerkRoller.applyPerks(player, perks)
         PerkRoller.displayPerks(player, perks)
 
+        // Roll and display world mutations
+        val mutations = MutationRoller.rollMutations()
+        MutationRoller.applyMutations(player, mutations)
+        MutationRoller.displayMutations(player, mutations)
+
         player.message("<col=8B0000>The corruption begins...</col>")
     }
 
