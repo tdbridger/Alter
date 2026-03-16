@@ -1,6 +1,6 @@
 [
   {
-    "npcs": ["npc.fishing_spot_1497", "npc.fishing_spot_1498"],
+    "npcs": ["npc.fishing_spot_1530"],
     "option": "Small Net",
     "level": 1,
     "experience": 10.0,
@@ -12,7 +12,7 @@
     ]
   },
   {
-    "npcs": ["npc.fishing_spot_1497", "npc.fishing_spot_1498"],
+    "npcs": ["npc.fishing_spot_1530"],
     "option": "Bait",
     "level": 5,
     "experience": 20.0,
@@ -25,7 +25,7 @@
     ]
   },
   {
-    "npcs": ["npc.rod_fishing_spot", "npc.rod_fishing_spot_1506", "npc.rod_fishing_spot_1507"],
+    "npcs": ["npc.rod_fishing_spot_1526", "npc.rod_fishing_spot_1527"],
     "option": "Lure",
     "level": 20,
     "experience": 50.0,
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "npcs": ["npc.rod_fishing_spot", "npc.rod_fishing_spot_1506", "npc.rod_fishing_spot_1507"],
+    "npcs": ["npc.rod_fishing_spot_1526", "npc.rod_fishing_spot_1527"],
     "option": "Bait",
     "level": 25,
     "experience": 60.0,
@@ -74,7 +74,7 @@
   },
   {
     "npcs": ["npc.fishing_spot_1519", "npc.fishing_spot_1518"],
-    "option": "Small Net",
+    "option": "Net",
     "level": 62,
     "experience": 120.0,
     "tool": "item.small_fishing_net",

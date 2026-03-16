@@ -78,13 +78,13 @@ class SpawnPlugin(
 
         spawnObj(obj = "object.altar_409", x = 3222, z = 3215, rot = 6)
 
-        // Fishing spots - Lumbridge Swamp coast (net/bait fishing)
-        spawnNpc(npc = "npc.fishing_spot_1497", x = 3246, z = 3155, walkRadius = 0, direction = Direction.SOUTH)
-        spawnNpc(npc = "npc.fishing_spot_1497", x = 3250, z = 3153, walkRadius = 0, direction = Direction.SOUTH)
+        // Fishing spots - Lumbridge Swamp coast (net/bait - shrimps/anchovies)
+        spawnNpc(npc = "npc.fishing_spot_1530", x = 3246, z = 3155, walkRadius = 0, direction = Direction.SOUTH)
+        spawnNpc(npc = "npc.fishing_spot_1530", x = 3250, z = 3155, walkRadius = 0, direction = Direction.SOUTH)
 
-        // Fishing spots - Barbarian Village (fly fishing, river)
-        spawnNpc(npc = "npc.rod_fishing_spot_1506", x = 3104, z = 3426, walkRadius = 0, direction = Direction.WEST)
-        spawnNpc(npc = "npc.rod_fishing_spot_1506", x = 3110, z = 3432, walkRadius = 0, direction = Direction.WEST)
+        // Fishing spots - Barbarian Village river (lure/bait - trout/salmon)
+        spawnNpc(npc = "npc.rod_fishing_spot_1526", x = 3104, z = 3426, walkRadius = 0, direction = Direction.WEST)
+        spawnNpc(npc = "npc.rod_fishing_spot_1526", x = 3110, z = 3432, walkRadius = 0, direction = Direction.WEST)
 
         // Chickens near Lumbridge
         spawnNpc(npc = "npc.chicken_1173", x = 3231, z = 3295, walkRadius = 5, direction = Direction.SOUTH)
