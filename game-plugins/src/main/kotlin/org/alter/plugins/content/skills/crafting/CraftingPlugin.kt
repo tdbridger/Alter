@@ -74,7 +74,7 @@ class CraftingPlugin(
         }
         val item2Id = getRSCM(recipe.item2)
         val resultId = getRSCM(recipe.result)
-        player.animate(1249) // crafting animation
+        player.animate(885) // gem cutting / crafting animation
         wait(3)
         player.inventory.remove(item2Id, 1)
         player.inventory.add(resultId, recipe.amount)

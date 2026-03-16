@@ -23,21 +23,14 @@ class FletchingPlugin(
 ) : KotlinPlugin(r, world, server) {
 
     private val recipes = listOf(
-        // Knife + logs → arrow shafts
+        // Knife + normal logs → arrow shafts (the default for normal logs)
         FletchItem("item.knife", "item.logs", "item.arrow_shaft", 1, 5.0, 15),
-        // Knife + logs → shortbow (u)
-        FletchItem("item.knife", "item.logs", "item.shortbow_u", 5, 5.0),
-        FletchItem("item.knife", "item.logs", "item.longbow_u", 10, 10.0),
+        // Knife + higher logs → shortbow (u) (one recipe per log type to avoid hash collision)
         FletchItem("item.knife", "item.oak_logs", "item.oak_shortbow_u", 20, 16.5),
-        FletchItem("item.knife", "item.oak_logs", "item.oak_longbow_u", 25, 25.0),
         FletchItem("item.knife", "item.willow_logs", "item.willow_shortbow_u", 35, 33.3),
-        FletchItem("item.knife", "item.willow_logs", "item.willow_longbow_u", 40, 41.5),
         FletchItem("item.knife", "item.maple_logs", "item.maple_shortbow_u", 50, 50.0),
-        FletchItem("item.knife", "item.maple_logs", "item.maple_longbow_u", 55, 58.3),
         FletchItem("item.knife", "item.yew_logs", "item.yew_shortbow_u", 65, 67.5),
-        FletchItem("item.knife", "item.yew_logs", "item.yew_longbow_u", 70, 75.0),
         FletchItem("item.knife", "item.magic_logs", "item.magic_shortbow_u", 80, 83.3),
-        FletchItem("item.knife", "item.magic_logs", "item.magic_longbow_u", 85, 91.5),
         // Bow string + unstrung → strung
         FletchItem("item.bow_string", "item.shortbow_u", "item.shortbow", 5, 5.0),
         FletchItem("item.bow_string", "item.longbow_u", "item.longbow", 10, 10.0),
