@@ -1,0 +1,102 @@
+[
+  {
+    "objects": ["object.clay_rocks_11363"],
+    "emptyObject": "object.rocks_11390",
+    "respawnTicks": 3,
+    "level": 1,
+    "experience": 5.0,
+    "ores": [
+      { "item": "item.clay", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.copper_rocks_10943"],
+    "emptyObject": "object.rocks_11390",
+    "respawnTicks": 3,
+    "level": 1,
+    "experience": 17.5,
+    "ores": [
+      { "item": "item.copper_ore", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.tin_rocks_11360", "object.tin_rocks_11361"],
+    "emptyObject": "object.rocks_11390",
+    "respawnTicks": 3,
+    "level": 1,
+    "experience": 17.5,
+    "ores": [
+      { "item": "item.tin_ore", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.iron_rocks_11365"],
+    "emptyObject": "object.rocks_11390",
+    "respawnTicks": 5,
+    "level": 15,
+    "experience": 35.0,
+    "ores": [
+      { "item": "item.iron_ore", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.silver_rocks_11369"],
+    "emptyObject": "object.rocks_11390",
+    "respawnTicks": 10,
+    "level": 20,
+    "experience": 40.0,
+    "ores": [
+      { "item": "item.silver_ore", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.coal_rocks_11366", "object.coal_rocks_11367"],
+    "emptyObject": "object.rocks_11390",
+    "respawnTicks": 15,
+    "level": 30,
+    "experience": 50.0,
+    "ores": [
+      { "item": "item.coal", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.gold_rocks_11371"],
+    "emptyObject": "object.rocks_11390",
+    "respawnTicks": 10,
+    "level": 40,
+    "experience": 65.0,
+    "ores": [
+      { "item": "item.gold_ore", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.mithril_rocks_11373"],
+    "emptyObject": "object.rocks_11390",
+    "respawnTicks": 20,
+    "level": 55,
+    "experience": 80.0,
+    "ores": [
+      { "item": "item.mithril_ore", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.adamantite_rocks_11375"],
+    "emptyObject": "object.rocks_11390",
+    "respawnTicks": 40,
+    "level": 70,
+    "experience": 95.0,
+    "ores": [
+      { "item": "item.adamantite_ore", "min": 1, "max": 1 }
+    ]
+  },
+  {
+    "objects": ["object.runite_rocks_11376", "object.runite_rocks_11377"],
+    "emptyObject": "object.rocks_11390",
+    "respawnTicks": 100,
+    "level": 85,
+    "experience": 125.0,
+    "ores": [
+      { "item": "item.runite_ore", "min": 1, "max": 1 }
+    ]
+  }
+]
