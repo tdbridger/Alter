@@ -42,7 +42,7 @@ class BoneBuryingPlugin(
                     // Find the "Bury" option
                     val buryIndex = def.interfaceOptions.indexOfFirst { it?.equals("Bury", ignoreCase = true) == true }
                     if (buryIndex != -1) {
-                        onItemOption(bone.itemName, option = buryIndex + 1) {
+                        onItemOption(bone.itemName, option = "bury") {
                             player.queue { bury(player, bone) }
                         }
                     } else {

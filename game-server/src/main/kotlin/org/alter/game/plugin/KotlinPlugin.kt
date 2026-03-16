@@ -266,7 +266,7 @@ abstract class KotlinPlugin(
                 def.interfaceOptions.filterNotNull().filter { it.isNotBlank() }
             }]"
         }
-        r.bindItem(def.id, option + 1, logic)
+        r.bindItem(def.id, option + 2, logic)
     }
 
     /**
