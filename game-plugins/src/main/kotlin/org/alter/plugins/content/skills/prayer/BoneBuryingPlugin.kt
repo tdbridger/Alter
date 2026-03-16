@@ -1,5 +1,6 @@
 package org.alter.plugins.content.skills.prayer
 
+import dev.openrune.cache.CacheManager.getItem
 import org.alter.api.Skills
 import org.alter.api.ext.*
 import org.alter.game.Server
@@ -17,8 +18,6 @@ enum class Bone(
     BONES("item.bones", 4.5),
     BIG_BONES("item.big_bones", 15.0),
     DRAGON_BONES("item.dragon_bones", 72.0),
-    DAGANNOTH_BONES("item.dagannoth_bones", 125.0),
-    WYVERN_BONES("item.wyvern_bones", 72.0),
     LAVA_DRAGON_BONES("item.lava_dragon_bones", 85.0),
     SUPERIOR_DRAGON_BONES("item.superior_dragon_bones", 150.0);
 
@@ -36,12 +35,21 @@ class BoneBuryingPlugin(
             Bone.values().forEach { bone ->
                 try {
                     bone.itemId = getRSCM(bone.itemName)
-                    // Use option index 1 which is typically "Bury" for bones
-                    onItemOption(bone.itemName, option = 1) {
-                        player.queue { bury(player, bone) }
+                    val def = getItem(bone.itemId)
+                    val options = def.interfaceOptions.filterNotNull().filter { it.isNotBlank() }
+                    Server.logger.info { "Bone ${bone.itemName} (${bone.itemId}) options: $options" }
+
+                    // Find the "Bury" option
+                    val buryIndex = def.interfaceOptions.indexOfFirst { it?.equals("Bury", ignoreCase = true) == true }
+                    if (buryIndex != -1) {
+                        onItemOption(bone.itemName, option = buryIndex + 1) {
+                            player.queue { bury(player, bone) }
+                        }
+                    } else {
+                        Server.logger.error { "No 'Bury' option found for ${bone.itemName}, options: $options" }
                     }
                 } catch (e: Exception) {
-                    Server.logger.error { "Failed to register bone: ${bone.itemName}: $e" }
+                    Server.logger.error { "Failed to register bone ${bone.itemName}: $e" }
                 }
             }
         }
