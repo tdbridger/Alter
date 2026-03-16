@@ -31,13 +31,15 @@ class CorruptionPlugin(
 ) : KotlinPlugin(r, world, server) {
 
     init {
-        // Start corruption timer and set XP rate on login
+        // Set XP rate on login, only start corruption if archetype chosen
         onLogin {
             // Phase B: 15x XP rate
             player.xpRate = 15.0
 
-            if (!player.timers.has(CORRUPTION_TIMER)) {
-                player.timers[CORRUPTION_TIMER] = 100 // 60 seconds
+            // Only start corruption timer if archetype has been chosen
+            val archetypeChosen = player.attr[ARCHETYPE_CHOSEN_ATTR] ?: false
+            if (archetypeChosen && !player.timers.has(CORRUPTION_TIMER)) {
+                player.timers[CORRUPTION_TIMER] = 100
             }
         }
 
@@ -110,8 +112,8 @@ class CorruptionPlugin(
             }
         }
 
-        // ::setcorruption command — admin/dev only
-        onCommand("setcorruption", Privilege.DEV_POWER, description = "Set corruption level") {
+        // ::setcorruption command — available to all during development
+        onCommand("setcorruption", description = "Set corruption level") {
             val args = player.getCommandArgs()
             val value = args[0].toIntOrNull()
             if (value == null || value < 0) {
@@ -121,6 +123,12 @@ class CorruptionPlugin(
             player.attr[CORRUPTION_ATTR] = value
             val tier = getTier(value)
             player.message("Corruption set to $value (Tier $tier: ${getTierName(tier)})")
+        }
+
+        // ::killme command — for testing death/scoring
+        onCommand("killme", description = "Kill yourself (testing)") {
+            player.getSkills().setCurrentLevel(Skills.HITPOINTS, 0)
+            player.message("You have been killed by your own command.")
         }
     }
 
