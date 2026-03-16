@@ -1,7 +1,7 @@
 [
   {
     "npcs": ["npc.fishing_spot_1530"],
-    "option": "Small Net",
+    "option": "Net",
     "level": 1,
     "experience": 10.0,
     "tool": "item.small_fishing_net",

@@ -80,7 +80,7 @@ class SpawnPlugin(
 
         // Fishing spots - Lumbridge Swamp coast (net/bait - shrimps/anchovies)
         spawnNpc(npc = "npc.fishing_spot_1530", x = 3246, z = 3155, walkRadius = 0, direction = Direction.SOUTH)
-        spawnNpc(npc = "npc.fishing_spot_1530", x = 3250, z = 3155, walkRadius = 0, direction = Direction.SOUTH)
+        spawnNpc(npc = "npc.fishing_spot_1530", x = 3242, z = 3148, walkRadius = 0, direction = Direction.SOUTH)
 
         // Fishing spots - Barbarian Village river (lure/bait - trout/salmon)
         spawnNpc(npc = "npc.rod_fishing_spot_1526", x = 3104, z = 3426, walkRadius = 0, direction = Direction.WEST)

@@ -25,11 +25,13 @@ class FishingPlugin(
             service.entries.forEach { entry ->
                 entry.npcs.forEach { npcName ->
                     try {
+                        Server.logger.info { "Registering fishing: $npcName option='${entry.option}'" }
                         onNpcOption(npcName, option = entry.option) {
                             player.queue { fish(player, entry, world) }
                         }
+                        Server.logger.info { "  -> Success" }
                     } catch (e: Exception) {
-                        // NPC doesn't have this option, skip
+                        Server.logger.error { "  -> Failed: $npcName option='${entry.option}': ${e.message}" }
                     }
                 }
             }
