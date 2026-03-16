@@ -60,52 +60,49 @@ class MiningPlugin(
         player.faceTile(obj.tile)
         player.message("You swing your pick at the rock.")
 
-        player.lock()
-        try {
-            while (true) {
-                if (world.getObject(obj.tile, obj.type) == null || world.getObject(obj.tile, obj.type)?.id != obj.id) {
-                    break
-                }
+        val startTile = player.tile
+        while (true) {
+            if (world.getObject(obj.tile, obj.type) == null || world.getObject(obj.tile, obj.type)?.id != obj.id) break
+            if (player.tile != startTile) break
 
-                player.animate(pick.animation)
-                wait(pick.speed)
+            player.animate(pick.animation)
+            wait(pick.speed)
 
-                val level = player.getSkills().getBaseLevel(Skills.MINING)
-                val chance = calculateSuccess(level, entry.level, pick)
-                if (Math.random() < chance) {
-                    val loot = rollLoot(entry)
-                    val amount = if (loot.min == loot.max) loot.min else loot.min + (Math.random() * (loot.max - loot.min + 1)).toInt()
+            if (player.tile != startTile) break
 
-                    if (player.inventory.isFull) {
-                        player.message("Your inventory is too full to hold any more ore.")
-                        break
-                    }
-
-                    player.inventory.add(loot.itemId, amount)
-                    player.addXp(Skills.MINING, entry.experience)
-                    player.message("You manage to mine some ore.")
-
-                    val emptyRock = DynamicObject(entry.emptyObjectId, obj.type, obj.rot, obj.tile)
-                    world.remove(obj)
-                    world.spawn(emptyRock)
-
-                    world.queue {
-                        wait(entry.respawnTicks)
-                        world.remove(emptyRock)
-                        world.spawn(DynamicObject(obj.id, obj.type, obj.rot, obj.tile))
-                    }
-                    break
-                }
+            val level = player.getSkills().getBaseLevel(Skills.MINING)
+            val chance = calculateSuccess(level, entry.level, pick)
+            if (Math.random() < chance) {
+                val loot = rollLoot(entry)
+                val amount = if (loot.min == loot.max) loot.min else loot.min + (Math.random() * (loot.max - loot.min + 1)).toInt()
 
                 if (player.inventory.isFull) {
                     player.message("Your inventory is too full to hold any more ore.")
                     break
                 }
+
+                player.inventory.add(loot.itemId, amount)
+                player.addXp(Skills.MINING, entry.experience)
+                player.message("You manage to mine some ore.")
+
+                val emptyRock = DynamicObject(entry.emptyObjectId, obj.type, obj.rot, obj.tile)
+                world.remove(obj)
+                world.spawn(emptyRock)
+
+                world.queue {
+                    wait(entry.respawnTicks)
+                    world.remove(emptyRock)
+                    world.spawn(DynamicObject(obj.id, obj.type, obj.rot, obj.tile))
+                }
+                break
             }
-        } finally {
-            player.animate(-1)
-            player.unlock()
+
+            if (player.inventory.isFull) {
+                player.message("Your inventory is too full to hold any more ore.")
+                break
+            }
         }
+        player.animate(-1)
     }
 
     private fun findPickaxe(player: Player): Pickaxe? {

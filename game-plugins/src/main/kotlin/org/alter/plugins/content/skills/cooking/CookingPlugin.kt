@@ -20,7 +20,8 @@ class CookingPlugin(
     private val cookingObjects = listOf(
         "object.cooking_range", "object.range", "object.cooking_range_4172",
         "object.range_7183", "object.fire_3769", "object.fire_3775",
-        "object.fire_4265", "object.fire_4266", "object.fire_5249"
+        "object.fire_4265", "object.fire_4266", "object.fire_5249",
+        "object.fire_26185", "object.fire_26186"
     )
 
     init {

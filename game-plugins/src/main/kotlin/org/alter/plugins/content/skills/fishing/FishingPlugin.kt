@@ -25,7 +25,10 @@ class FishingPlugin(
             service.entries.forEach { entry ->
                 entry.npcs.forEach { npcName ->
                     try {
-                        Server.logger.info { "Registering fishing: $npcName option='${entry.option}'" }
+                        val npcId = org.alter.rscm.RSCM.getRSCM(npcName)
+                        val npcDef = dev.openrune.cache.CacheManager.getNpc(npcId)
+                        val rawActions = (0 until 5).map { i -> "[$i]=${npcDef.actions[i]}" }.joinToString(", ")
+                        Server.logger.info { "Registering fishing: $npcName option='${entry.option}' actions=[$rawActions]" }
                         onNpcOption(npcName, option = entry.option) {
                             player.queue { fish(player, entry, world) }
                         }
@@ -52,7 +55,7 @@ class FishingPlugin(
         }
 
         // Check bait
-        if (entry.baitId != -1 && !player.inventory.contains(entry.baitId)) {
+        if (entry.bait != null && entry.baitId > 0 && !player.inventory.contains(entry.baitId)) {
             player.message("You don't have any bait.")
             return
         }
@@ -64,60 +67,55 @@ class FishingPlugin(
 
         player.message("You cast out your ${entry.tool.removePrefix("item.").replace("_", " ")}...")
 
-        player.lock()
-        try {
-            while (true) {
-                player.animate(entry.animation)
-                wait(5) // fishing tick
+        val startTile = player.tile
+        while (true) {
+            player.animate(entry.animation)
+            wait(5)
 
-                // Roll for catch
-                val level = player.getSkills().getBaseLevel(Skills.FISHING)
+            // Stop if player moved
+            if (player.tile != startTile) break
 
-                // Find the best fish we can catch at our level
-                val catchable = entry.fish.filter { level >= it.level }
-                if (catchable.isEmpty()) break
+            val level = player.getSkills().getBaseLevel(Skills.FISHING)
+            val catchable = entry.fish.filter { level >= it.level }
+            if (catchable.isEmpty()) break
 
-                val chance = 0.3 + (level - entry.level) * 0.015
-                if (Math.random() < chance.coerceIn(0.1, 0.9)) {
-                    // Pick a fish weighted by level proximity
-                    val caught = rollFish(catchable)
+            val chance = 0.3 + (level - entry.level) * 0.015
+            if (Math.random() < chance.coerceIn(0.1, 0.9)) {
+                val caught = rollFish(catchable)
 
-                    if (player.inventory.isFull) {
-                        player.message("Your inventory is too full to hold any more fish.")
-                        break
-                    }
+                if (player.inventory.isFull) {
+                    player.message("Your inventory is too full to hold any more fish.")
+                    break
+                }
 
-                    // Consume bait
-                    if (entry.baitId != -1) {
-                        player.inventory.remove(entry.baitId, 1)
-                        if (!player.inventory.contains(entry.baitId)) {
-                            player.message("You've run out of bait.")
-                            player.inventory.add(caught.itemId, 1)
-                            player.addXp(Skills.FISHING, caught.experience)
-                            player.message("You catch a ${caught.item.removePrefix("item.").replace("_", " ")}.")
-                            break
-                        }
-                    }
-
-                    player.inventory.add(caught.itemId, 1)
-                    player.addXp(Skills.FISHING, caught.experience)
-                    player.message("You catch a ${caught.item.removePrefix("item.").replace("_", " ")}.")
-
-                    if (player.inventory.isFull) {
-                        player.message("Your inventory is too full to hold any more fish.")
+                // Consume bait
+                if (entry.bait != null && entry.baitId > 0) {
+                    player.inventory.remove(entry.baitId, 1)
+                    if (!player.inventory.contains(entry.baitId)) {
+                        player.message("You've run out of bait.")
+                        player.inventory.add(caught.itemId, 1)
+                        player.addXp(Skills.FISHING, caught.experience)
+                        player.message("You catch some ${caught.item.removePrefix("item.raw_").replace("_", " ")}.")
                         break
                     }
                 }
 
-                // Check tool still in inventory
-                if (!player.inventory.contains(entry.toolId) && !player.equipment.contains(entry.toolId)) {
+                player.inventory.add(caught.itemId, 1)
+                player.addXp(Skills.FISHING, caught.experience)
+                player.message("You catch some ${caught.item.removePrefix("item.raw_").replace("_", " ")}.")
+
+                if (player.inventory.isFull) {
+                    player.message("Your inventory is too full to hold any more fish.")
                     break
                 }
             }
-        } finally {
-            player.animate(-1)
-            player.unlock()
+
+            // Check tool still in inventory
+            if (!player.inventory.contains(entry.toolId) && !player.equipment.contains(entry.toolId)) {
+                break
+            }
         }
+        player.animate(-1)
     }
 
     private fun rollFish(catchable: List<FishingLoot>): FishingLoot {

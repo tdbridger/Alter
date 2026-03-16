@@ -65,59 +65,51 @@ class WoodcuttingPlugin(
         player.faceTile(obj.tile)
         player.message("You swing your axe at the tree.")
 
-        player.lock()
-        try {
-            while (true) {
-                // Check tree still exists
-                if (world.getObject(obj.tile, obj.type) == null || world.getObject(obj.tile, obj.type)?.id != obj.id) {
-                    break
-                }
+        val startTile = player.tile
+        while (true) {
+            // Check tree still exists
+            if (world.getObject(obj.tile, obj.type) == null || world.getObject(obj.tile, obj.type)?.id != obj.id) break
+            // Stop if player moved
+            if (player.tile != startTile) break
 
-                // Play chop animation
-                player.animate(axe.animation)
-                wait(axe.speed)
+            player.animate(axe.animation)
+            wait(axe.speed)
 
-                // Roll for success based on level
-                val level = player.getSkills().getBaseLevel(Skills.WOODCUTTING)
-                val chance = calculateSuccess(level, entry.level, axe)
-                if (Math.random() < chance) {
-                    // Give logs
-                    val loot = rollLoot(entry)
-                    val amount = if (loot.min == loot.max) loot.min else loot.min + (Math.random() * (loot.max - loot.min + 1)).toInt()
+            if (player.tile != startTile) break
 
-                    if (player.inventory.isFull) {
-                        player.message("Your inventory is too full to hold any more logs.")
-                        break
-                    }
+            val level = player.getSkills().getBaseLevel(Skills.WOODCUTTING)
+            val chance = calculateSuccess(level, entry.level, axe)
+            if (Math.random() < chance) {
+                val loot = rollLoot(entry)
+                val amount = if (loot.min == loot.max) loot.min else loot.min + (Math.random() * (loot.max - loot.min + 1)).toInt()
 
-                    player.inventory.add(loot.itemId, amount)
-                    player.addXp(Skills.WOODCUTTING, entry.experience)
-                    player.message("You get some logs.")
-
-                    // Deplete tree → stump
-                    val stump = DynamicObject(entry.emptyObjectId, obj.type, obj.rot, obj.tile)
-                    world.remove(obj)
-                    world.spawn(stump)
-
-                    // Respawn tree after delay
-                    world.queue {
-                        wait(entry.respawnTicks)
-                        world.remove(stump)
-                        world.spawn(DynamicObject(obj.id, obj.type, obj.rot, obj.tile))
-                    }
-                    break
-                }
-
-                // Failed roll — keep chopping
                 if (player.inventory.isFull) {
                     player.message("Your inventory is too full to hold any more logs.")
                     break
                 }
+
+                player.inventory.add(loot.itemId, amount)
+                player.addXp(Skills.WOODCUTTING, entry.experience)
+                player.message("You get some logs.")
+
+                val stump = DynamicObject(entry.emptyObjectId, obj.type, obj.rot, obj.tile)
+                world.remove(obj)
+                world.spawn(stump)
+
+                world.queue {
+                    wait(entry.respawnTicks)
+                    world.remove(stump)
+                    world.spawn(DynamicObject(obj.id, obj.type, obj.rot, obj.tile))
+                }
+                break
             }
-        } finally {
-            player.animate(-1) // stop animation
-            player.unlock()
+
+            if (player.inventory.isFull) {
+                player.message("Your inventory is too full to hold any more logs.")
+                break
+            }
         }
+        player.animate(-1)
     }
 
     private fun findAxe(player: Player): Axe? {
