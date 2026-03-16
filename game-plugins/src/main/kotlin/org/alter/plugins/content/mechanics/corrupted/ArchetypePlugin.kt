@@ -180,6 +180,12 @@ class ArchetypePlugin(
         player.message("Starting Location: ${archetype.startLocation.displayName}")
         player.message("Score Multiplier: ${archetype.multiplier}x (${archetype.multiplierLabel})")
         player.message("")
+
+        // Roll and display perks
+        val perks = PerkRoller.rollPerks(archetype.restriction.name)
+        PerkRoller.applyPerks(player, perks)
+        PerkRoller.displayPerks(player, perks)
+
         player.message("<col=8B0000>The corruption begins...</col>")
     }
 

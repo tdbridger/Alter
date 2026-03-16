@@ -91,6 +91,9 @@ class CorruptionPlugin(
                 player.message("<col=8B0000>Corruption: $newCorruption (${getTierName(newTier)})</col>")
             }
 
+            // Apply corruption tier effects (Phase F)
+            CorruptionEffects.applyTickEffects(player, player.world, newCorruption)
+
             // Reschedule timer
             player.timers[CORRUPTION_TIMER] = 100
         }
